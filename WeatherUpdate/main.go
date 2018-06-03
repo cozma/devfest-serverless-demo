@@ -1,27 +1,27 @@
-package WeatherUpdate
+package main
 
 import (
 	"github.com/aws/aws-lambda-go/lambda"
-	"github.com/ZachtimusPrime/go-wunderground/wunderground"
 	"github.com/labstack/gommon/log"
+	"github.com/ramsgoli/Golang-OpenWeatherMap"
 )
 
 type WeatherRequest struct {
-	APIKey string
-	State string
-	City string
+	APIKey string `json:"api_key"`
+	Location string `json:"location"`
 }
 
 func WeatherHandler(request WeatherRequest) (interface{}, error) {
-	// Client to call the weather underground API
-	weatherClient := wunderground.NewClient(nil, request.State, request.City, request.APIKey)
+	owm := openweathermap.OpenWeatherMap{
+		API_KEY: request.APIKey,
+	}
 
-	// Get Current Weather
-	if curWeather, err := weatherClient.GetWeather(); err != nil {
-		log.Info("Could not get current weather: ", err)
+	if w, err := owm.CurrentWeatherFromCity(request.Location); err != nil {
+		log.Error(err)
 		return nil, err
 	} else {
-		return curWeather, nil
+		log.Info("Current Weather: ", w)
+		return w, nil
 	}
 }
 

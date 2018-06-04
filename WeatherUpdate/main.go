@@ -30,8 +30,7 @@ func WeatherHandler(request WeatherRequest) (interface{}, error) {
 
 func PublishSNS(weather openweathermap.Weather, snsArn string) interface{} {
 	svc := sns.New(session.New())
-	message := "Good morning! It is currently " + weather.Main +
-		" with " + weather.Description + " in your area."
+	message := "Good morning! There's currently " + weather.Description + " in your area."
 	params := &sns.PublishInput{
 		Message: aws.String(message),
 		TopicArn: aws.String(snsArn),

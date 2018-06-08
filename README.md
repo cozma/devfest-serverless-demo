@@ -12,7 +12,7 @@
   - CloudWatch Rule Setup
   - SNS Topic
 
-The application requires [you create a CloudWatch Rule](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#rules) that will need to make a request to the Lambda on a daily basis. This is easily configurable by setting your event source to schedule on a 1 day fixed rate rotation and attaching the ARN of the current version of the Lambda Script. You also want to change the Configure Input to "Constant (JSON text)" and input the request JSON (sample below) for your Pager Duty Application.
+The application requires [you create a CloudWatch Rule](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#rules) that will need to make a request to the Lambda on a daily basis. This is easily configurable by setting your event source to schedule on a 1 day fixed rate rotation and attaching the ARN of the current version of the Lambda Script. You also want to change the Configure Input to "Constant (JSON text)" and input the request JSON (sample below) for your Weather Update Application.
 
 > Name: devfest-serverless-demo
 

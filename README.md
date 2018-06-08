@@ -21,7 +21,7 @@ Sample Request:
 ```
 {
   "snsarn": "arn:aws:sns:us-east-1:344449400151:WeatherSNS",
-  "api_key": "cd3aceac328507a6c8d90506036899ec",
+  "api_key": "INSERT API KEY HERE",
   "location": "20001,us"
 }
 ```
